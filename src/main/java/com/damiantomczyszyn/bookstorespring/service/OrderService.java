@@ -29,7 +29,6 @@ public class OrderService {
     public void saveOrder(OrderDto orderDto, String name) {
         Order order = OrderMapper.mapToOrder(orderDto);
         orderRepository.save(order);
-
         userService.addOrder(order, name);
 
         orderItemRepository.saveAll(OrderMapper.mapToOrderItemList(cart, order));
@@ -42,6 +41,7 @@ public class OrderService {
             return;
         }
         order.get().setRealized(true);
+        orderRepository.save(order.get());
         userService.removeOrder(order.get());
     }
 }

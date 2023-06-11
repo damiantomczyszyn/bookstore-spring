@@ -19,6 +19,7 @@ public class UserService {
             throw new EntityNotFoundException();
         }
         user.get().addOrder(order);
+        userRepository.save(user.get());
 
     }
 
