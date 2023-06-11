@@ -23,7 +23,12 @@ public class UserService {
     }
 
 
-    public void removeOrder(Long orderId, Long userId) {
+    public void removeOrder(Order order) {
+        var user = userRepository.findByOrdersWithin(order);
+        if(!user.isPresent()){
+            throw new EntityNotFoundException();
+        }
+        user.get().getOrders().remove(order);
 
     return;
     }

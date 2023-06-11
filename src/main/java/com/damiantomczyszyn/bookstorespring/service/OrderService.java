@@ -42,5 +42,6 @@ public class OrderService {
             return;
         }
         order.get().setRealized(true);
+        userService.removeOrder(order.get());
     }
 }

@@ -33,7 +33,7 @@ public class SecurityConfiguration {
         return httpSecurity.csrf().disable()
                 .authorizeHttpRequests()
                 .anyRequest().authenticated()
-                .and().formLogin()
+                .and().formLogin().defaultSuccessUrl("/",true)
                 .and()
                 .build();
 

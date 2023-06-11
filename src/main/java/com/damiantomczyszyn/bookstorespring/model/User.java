@@ -29,7 +29,7 @@ public class User implements UserDetails {
     private String password;
     @Enumerated(EnumType.ORDINAL)
     private Role role;
-     @OneToMany(mappedBy = "user")
+     @OneToMany
      private List<Order> orders;
 
      public void addOrder(Order order){
@@ -37,6 +37,13 @@ public class User implements UserDetails {
      }
     public void removeOrder(Order order){
         orders.remove(order);
+    }
+
+    public User(String email, String password, Role role, List<Order> orders) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.orders = orders;
     }
 
     @Override
