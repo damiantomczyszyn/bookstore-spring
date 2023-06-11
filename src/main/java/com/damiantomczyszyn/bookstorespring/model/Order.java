@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Table(name = "orders")
@@ -23,6 +24,7 @@ public class Order {
     private String postCode;
     private String city;
     private LocalDateTime created;
+    boolean realized = false;
 
     @OneToMany
     @JoinColumn(name = "orderId")

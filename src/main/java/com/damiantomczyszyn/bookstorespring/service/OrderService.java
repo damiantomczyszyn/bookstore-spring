@@ -30,4 +30,12 @@ public class OrderService {
         orderItemRepository.saveAll(OrderMapper.mapToOrderItemList(cart, order));
         cart.cleanCart();
     }
+
+    public void realizeById(Long orderId) {
+       var order = orderRepository.findById(orderId);
+        if (!order.isPresent()){
+            return;
+        }
+        order.get().setRealized(true);
+    }
 }
