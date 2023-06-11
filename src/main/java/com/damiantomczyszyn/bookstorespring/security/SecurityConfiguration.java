@@ -31,13 +31,13 @@ public class SecurityConfiguration {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.csrf().disable()
-                .authorizeHttpRequests()
+                .authorizeRequests()
+                .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
-                .and().formLogin().defaultSuccessUrl("/",true)
+                .and()
+                .formLogin().defaultSuccessUrl("/", true)
                 .and()
                 .build();
-
-
     }
 
 

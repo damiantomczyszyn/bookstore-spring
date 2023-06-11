@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 
-@Entity
+@Entity(name = "users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,7 +27,7 @@ public class User implements UserDetails {
     @Email
     private String email;
     private String password;
-    @Enumerated(EnumType.ORDINAL)
+@Enumerated(EnumType.ORDINAL)
     private Role role;
      @OneToMany
      private List<Order> orders;
@@ -48,7 +48,9 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        System.out.println("kim on jest? "+role.name());
         return List.of(new SimpleGrantedAuthority(role.name()));
+
     }
 
     @Override

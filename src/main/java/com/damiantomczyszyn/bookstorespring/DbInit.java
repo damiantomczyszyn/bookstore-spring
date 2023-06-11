@@ -38,7 +38,8 @@ public class DbInit implements CommandLineRunner {
                 new Item("NIC MNIE NIE ZŁAMIE", new BigDecimal("36.46"), "https://m.media-amazon.com/images/I/41ZVR-cw7wL._SX333_BO1,204,203,200_.jpg")
         ));
         User user = new User("admin@gmail.com","admin",Role.ADMIN,new ArrayList<Order>());
-        userRepository.save(user);
+        User user1 = new User("user@gmail.com","user", Role.USER,new ArrayList<Order>());
+        userRepository.saveAll(List.of(user,user1));
     }
 }
 
