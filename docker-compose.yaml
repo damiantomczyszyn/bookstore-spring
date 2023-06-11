@@ -1,0 +1,12 @@
+version: '1.0'
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: ./Dockerfile-db
+      args:
+        - MYSQL_DATABASE=bookstore
+        - MYSQL_ROOT_PASSWORD=root
+    ports: 
+      - "3306:3306"
