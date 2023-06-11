@@ -38,4 +38,8 @@ public class CartService {
             }
         }
     }
+
+    public void removeItem(Long itemId) {
+        itemRepository.deleteById(itemId);
+    }
 }
