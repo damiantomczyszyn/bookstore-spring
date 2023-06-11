@@ -16,17 +16,22 @@ public class OrderService {
     private final Cart cart;
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
+    private final UserService userService;
 
     @Autowired
-    public OrderService(Cart cart, OrderRepository orderRepository, OrderItemRepository orderItemRepository) {
+    public OrderService(Cart cart, OrderRepository orderRepository, OrderItemRepository orderItemRepository, UserService userService) {
         this.cart = cart;
         this.orderRepository = orderRepository;
         this.orderItemRepository = orderItemRepository;
+        this.userService = userService;
     }
 
-    public void saveOrder(OrderDto orderDto) {
+    public void saveOrder(OrderDto orderDto, String name) {
         Order order = OrderMapper.mapToOrder(orderDto);
         orderRepository.save(order);
+
+        userService.addOrder(order, name);
+
         orderItemRepository.saveAll(OrderMapper.mapToOrderItemList(cart, order));
         cart.cleanCart();
     }
