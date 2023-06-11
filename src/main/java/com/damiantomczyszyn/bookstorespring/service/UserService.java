@@ -24,7 +24,7 @@ public class UserService {
 
 
     public void removeOrder(Order order) {
-        var user = userRepository.findByOrdersWithin(order);
+        var user = userRepository.findByOrdersContaining(order);
         if(!user.isPresent()){
             throw new EntityNotFoundException();
         }
