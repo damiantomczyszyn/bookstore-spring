@@ -8,9 +8,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Component
@@ -28,17 +31,15 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
+        System.out.println("authenticate:");
         System.out.println(name);
         System.out.println(password);
         if (shouldAuthenticateAgainstThirdPartySystem(name, password)) {
-
-
-
-
-            // use the credentials
-            // and authenticate against the third-party system
+            var user = repository.findByEmail(name);
+            List<GrantedAuthority> authorities = new ArrayList<>();
+            authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
             return new UsernamePasswordAuthenticationToken(
-                    name, password, new ArrayList<>());
+                    name, password, user.get().getAuthorities());
         } else {
             throw  new BadCredentialsException("nie poprawne logowanie");
         }
