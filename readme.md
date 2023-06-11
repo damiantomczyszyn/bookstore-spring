@@ -22,12 +22,15 @@ OrderItem
 User
 ```
 
+## Functionalities
+* Admin and User roles
+* Adding items to cart
+* Making orders
+* Realizing orders by Admin
+
 # API endpoints
 
 These endpoints allow you to handle Stripe subscriptions for Publish and Analyze.
-
-
-
 
 
 ### GET
