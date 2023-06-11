@@ -1,6 +1,7 @@
-package com.damiantomczyszyn.bookstorespring.model;
+package com.damiantomczyszyn.bookstorespring;
 
 
+import com.damiantomczyszyn.bookstorespring.model.Item;
 import lombok.Getter;
 
 import java.math.BigDecimal;
