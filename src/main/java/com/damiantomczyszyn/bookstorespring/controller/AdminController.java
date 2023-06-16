@@ -58,6 +58,12 @@ public class AdminController {
         return "redirect:/";
     }
 
+    @PutMapping
+    private String updateItem(Item item) {
+        itemRepository.save(item);
+        return "redirect:/";
+    }
+
     @GetMapping("/showorders")
     @ResponseBody
     public List<Order> showOrders() {
