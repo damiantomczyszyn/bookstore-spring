@@ -39,6 +39,7 @@ public class AdminController {
         return "adminview/addItem";
     }
 
+
     @GetMapping("/delete")
     private String adminPage2(Model model) {
         model.addAttribute("items", cartService.getAllItems());
@@ -59,7 +60,9 @@ public class AdminController {
     }
 
     @PutMapping
-    private String updateItem(Item item) {
+    private String updateItem(@RequestBody Item item) {
+        System.out.println("put");
+        System.out.println(item.toString());
         itemRepository.save(item);
         return "redirect:/";
     }

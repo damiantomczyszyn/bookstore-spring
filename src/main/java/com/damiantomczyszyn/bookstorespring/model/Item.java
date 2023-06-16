@@ -23,6 +23,16 @@ public class Item {
     private BigDecimal price;
     private String imgUrl;
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", imgUrl='" + imgUrl + '\'' +
+                '}';
+    }
+
     public Item(String name, BigDecimal price, String imgUrl) {
         this.name = name;
         this.price = price;
