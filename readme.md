@@ -46,7 +46,7 @@ These endpoints allow you to handle Stripe subscriptions for Publish and Analyze
 ### POST
 `http://localhost:8080/order/saveorder` [make order](http://localhost:8080/order/saveorder) <br/>
 
-## Admin special endoints
+## Adminl endoints
 
 ### GET
 `http://localhost:8080/admin` [add item](http://localhost:8080/admin) <br/>
@@ -54,6 +54,10 @@ These endpoints allow you to handle Stripe subscriptions for Publish and Analyze
 `http://localhost:8080/admin/delete/{itemId}` [delete item by id](http://localhost:8080/admin/delete/{itemId}) <br/>
 `http://localhost:8080/admin/realizeorder/{orderId}` [realize order by id](http://localhost:8080/admin/realizeorder/{orderId}) <br/>
 `http://localhost:8080/admin/showorders` [show all orders](http://localhost:8080/admin/showorders) <br/>
+
+### PUT
+`http://localhost:8080/admin` [update book](http://localhost:8080/admin) <br/>
+
 
 
 
